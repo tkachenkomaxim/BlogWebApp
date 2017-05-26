@@ -1,0 +1,13 @@
+﻿
+@using Blog.Models
+
+@model Post
+
+<div class="content-grid-info">
+    <div class="post-info">
+        <h4>@Html.ActionLink(Model.Title, "Post", new { Model.Id }) @Model.Created.ToLongDateString() @Model.Created.ToShortTimeString()</h4>
+        <p>@Model.Content.Substring(0, 200)...</p>
+        @Html.ActionLink("READ MORE", "Post", new { Model.Id })<span></span>
+    </div>
+</div>
+

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Post";
+}
+
+@using Blog.Models
+
+@model Post
+
+<div class="single">
+    <div class="container">
+        <div class="col-md-8 single-main">
+            <div class="single-grid">
+                <h4>@Model.Title</h4>
+                <p>
+                    @Model.Content
+                </p>
+                <p>
+                    Created: @Model.Created.ToLongDateString() @Model.Created.ToShortTimeString()
+                </p>
+                @if (Model.Created != Model.Updated)
+                {
+                    <p>
+                        Last updated: @Model.Updated.ToLongDateString() @Model.Updated.ToShortTimeString()
+                    </p>
+                }
+
+                <div>
+                    @Html.ActionLink("Edit", "Edit", new { Model.Id })
+                </div>
+
+            </div>
+        </div>
+       
+</div>
+</div>
+

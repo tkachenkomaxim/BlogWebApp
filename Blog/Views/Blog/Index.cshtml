@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using Blog.Models
+
+@model List<Post>
+
+ <div class="col-md-8 content-main">
+     <div> @Html.ActionLink("New post", "New")</div>
+      <div class="content-grid">
+
+        @foreach (var post in Model)
+        {
+            @Html.Action("PostInfo", post);
+        }
+
+       </div>
+ </div>
+            
+
