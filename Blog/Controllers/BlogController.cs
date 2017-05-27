@@ -25,8 +25,8 @@ namespace Blog.Controllers
 
         public ActionResult Post(int Id)
         {
-            List<Post> post = _blogContext1.Posts.Where(x => x.Id == Id).ToList();
-            return View(post[0]);
+            Post post = _blogContext1.Posts.SingleOrDefault(x => x.Id == Id);
+            return View(post);
         }
 
         public ActionResult About()
@@ -42,6 +42,7 @@ namespace Blog.Controllers
 
             return View();
         }
+
         [HttpGet]
         public ActionResult New()
         {
@@ -62,6 +63,7 @@ namespace Blog.Controllers
             List<Post> post = _blogContext1.Posts.Where(x => x.Id == Id).ToList();
             return View(post[0]);
         }
+
         [HttpPost]
         public ActionResult Edit(Post post)
         {
@@ -74,6 +76,13 @@ namespace Blog.Controllers
             return RedirectToAction("Post", new { post.Id });
         }
 
+        public ActionResult Delete(int Id)
+        {
+            Post post = _blogContext1.Posts.SingleOrDefault(x => x.Id == Id);
+            _blogContext1.Posts.Remove(post);
+            _blogContext1.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
     }
 }
