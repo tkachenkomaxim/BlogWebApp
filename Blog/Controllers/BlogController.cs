@@ -10,7 +10,7 @@ namespace Blog.Controllers
 {
     public class BlogController : Controller
     {
-       private BlogDataContext1 _blogContext1 = new BlogDataContext1();
+       private BlogDataContext _blogContext1 = new BlogDataContext();
 
         public ActionResult Index()
         {
@@ -18,28 +18,24 @@ namespace Blog.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult PostInfo(Post post)
+        public ActionResult PostInfo(PostViewModel post)
         {
             return PartialView("_PostInfo", post);
         }
 
         public ActionResult Post(int Id)
         {
-            Post post = _blogContext1.Posts.SingleOrDefault(x => x.Id == Id);
+            PostViewModel post = _blogContext1.Posts.SingleOrDefault(x => x.Id == Id);
             return View(post);
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
@@ -50,7 +46,7 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(Post post)
+        public ActionResult New(PostViewModel post)
         {
             _blogContext1.Posts.Add(post);
             _blogContext1.SaveChanges();
@@ -60,12 +56,12 @@ namespace Blog.Controllers
         [HttpGet]
         public ActionResult Edit(int Id)
         {
-            List<Post> post = _blogContext1.Posts.Where(x => x.Id == Id).ToList();
+            List<PostViewModel> post = _blogContext1.Posts.Where(x => x.Id == Id).ToList();
             return View(post[0]);
         }
 
         [HttpPost]
-        public ActionResult Edit(Post post)
+        public ActionResult Edit(PostViewModel post)
         {
             var oldPost = _blogContext1.Posts.Where(x => x.Id == post.Id).FirstOrDefault();
             oldPost.Title = post.Title;
@@ -78,7 +74,7 @@ namespace Blog.Controllers
 
         public ActionResult Delete(int Id)
         {
-            Post post = _blogContext1.Posts.SingleOrDefault(x => x.Id == Id);
+            PostViewModel post = _blogContext1.Posts.SingleOrDefault(x => x.Id == Id);
             _blogContext1.Posts.Remove(post);
             _blogContext1.SaveChanges();
             return RedirectToAction("Index");

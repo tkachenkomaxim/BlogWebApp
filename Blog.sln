@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog", "Blog\Blog.csproj", "{058BA6EC-6A05-411A-81E8-59A67208D7EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.WebUI", "Blog\Blog.WebUI.csproj", "{058BA6EC-6A05-411A-81E8-59A67208D7EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.DAL", "Blog.Model\Blog.DAL.csproj", "{7342A5D0-8A0A-4E20-B007-3BCEFD0040E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{058BA6EC-6A05-411A-81E8-59A67208D7EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{058BA6EC-6A05-411A-81E8-59A67208D7EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{058BA6EC-6A05-411A-81E8-59A67208D7EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7342A5D0-8A0A-4E20-B007-3BCEFD0040E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7342A5D0-8A0A-4E20-B007-3BCEFD0040E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7342A5D0-8A0A-4E20-B007-3BCEFD0040E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7342A5D0-8A0A-4E20-B007-3BCEFD0040E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
