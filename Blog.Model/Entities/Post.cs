@@ -16,11 +16,5 @@ namespace Blog.Models
         public string Title { get; set; }
 
         public string Content { get; set; } 
-
-        public Post()
-        {
-            Created = DateTime.Now;
-            Updated = DateTime.Now;
-        }
     }
 }
