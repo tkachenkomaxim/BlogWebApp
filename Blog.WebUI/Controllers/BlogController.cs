@@ -10,7 +10,7 @@ namespace Blog.Controllers
 {
     public class BlogController : Controller
     {
-       private BlogDataContext _blogContext1 = new BlogDataContext();
+       private BlogDataContext _blogContext = new BlogDataContext();
 
         public ActionResult Index()
         {
