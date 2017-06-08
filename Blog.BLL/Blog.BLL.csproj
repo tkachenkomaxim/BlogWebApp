@@ -7,8 +7,8 @@
     <ProjectGuid>{B8DE20B5-6CF5-4931-AE1E-A9C13C72C8F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Blog.BAL</RootNamespace>
-    <AssemblyName>Blog.BAL</AssemblyName>
+    <RootNamespace>Blog.BLL</RootNamespace>
+    <AssemblyName>Blog.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>D:\Professional Soft\VS2015\Common7\IDE\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.DAL\Blog.DAL.csproj">
+      <Project>{7342a5d0-8a0a-4e20-b007-3bcefd0040e5}</Project>
+      <Name>Blog.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.WebUI\Blog.WebUI.csproj">
+      <Project>{058ba6ec-6a05-411a-81e8-59a67208d7eb}</Project>
+      <Name>Blog.WebUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

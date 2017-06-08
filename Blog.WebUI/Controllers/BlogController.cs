@@ -4,17 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
-using Blog.Models;
+using Blog.DAL;
+
 
 namespace Blog.Controllers
 {
     public class BlogController : Controller
     {
-       private BlogDataContext _blogContext = new BlogDataContext();
-
         public ActionResult Index()
         {
-            return View(_blogContext1.Posts.ToList());
+            return View(BlogManager.GetAllPosts());
         }
 
         [ChildActionOnly]
