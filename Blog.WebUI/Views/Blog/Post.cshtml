@@ -3,9 +3,9 @@
     ViewBag.Title = "Post";
 }
 
-@using Blog.Models
+@using Blog.ViewModels
 
-@model Post
+@model PostViewModel
 
 <div class="single">
     <div class="container">
@@ -19,7 +19,7 @@
                     Created: @Model.Created.ToLongDateString() @Model.Created.ToShortTimeString()
                 </p>
                 @if (Model.Created != Model.Updated)
-                {
+                { 
                     <p>
                         Last updated: @Model.Updated.ToLongDateString() @Model.Updated.ToShortTimeString()
                     </p>

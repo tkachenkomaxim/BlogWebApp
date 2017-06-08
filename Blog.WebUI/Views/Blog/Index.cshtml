@@ -1,9 +1,9 @@
 ﻿@{
     ViewBag.Title = "Blog";
 }
-@using Blog.Models
+@using Blog.ViewModels
 
-@model List<Post>
+@model List<PostViewModel>
 
 <div> @Html.ActionLink("New post", "New", null, new {@class = "link-button" })</div>
 

@@ -4,16 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
-using Blog.DAL;
+using Blog.ViewModels;
+using Blog.BLL;
 
 
 namespace Blog.Controllers
 {
     public class BlogController : Controller
     {
+        private BlogSerrvice _blogService;
+
+        public BlogController()
+        {
+            BlogSerrvice blogService = new BlogSerrvice();
+        }
         public ActionResult Index()
         {
-            return View(BlogManager.GetAllPosts());
+            return View(_blogService.GetAllPosts());
         }
 
         [ChildActionOnly]
@@ -24,8 +31,7 @@ namespace Blog.Controllers
 
         public ActionResult Post(int Id)
         {
-            PostViewModel post = _blogContext1.Posts.SingleOrDefault(x => x.Id == Id);
-            return View(post);
+            return View(_blogService.GetPost(Id));
         }
 
         public ActionResult About()
@@ -47,35 +53,26 @@ namespace Blog.Controllers
         [HttpPost]
         public ActionResult New(PostViewModel post)
         {
-            _blogContext1.Posts.Add(post);
-            _blogContext1.SaveChanges();
+            _blogService.NewPost(post);
             return RedirectToAction("Post", new { post.Id });
         }
 
         [HttpGet]
         public ActionResult Edit(int Id)
         {
-            List<PostViewModel> post = _blogContext1.Posts.Where(x => x.Id == Id).ToList();
-            return View(post[0]);
+            return View(_blogService.GetPost(Id));
         }
 
         [HttpPost]
         public ActionResult Edit(PostViewModel post)
         {
-            var oldPost = _blogContext1.Posts.Where(x => x.Id == post.Id).FirstOrDefault();
-            oldPost.Title = post.Title;
-            oldPost.Content = post.Content;
-            oldPost.Updated = DateTime.Now;
-            _blogContext1.SaveChanges();
-
+            _blogService.EditPost(post);
             return RedirectToAction("Post", new { post.Id });
         }
 
         public ActionResult Delete(int Id)
         {
-            PostViewModel post = _blogContext1.Posts.SingleOrDefault(x => x.Id == Id);
-            _blogContext1.Posts.Remove(post);
-            _blogContext1.SaveChanges();
+            _blogService.DeletePost(Id);
             return RedirectToAction("Index");
         }
 
